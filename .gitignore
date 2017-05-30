@@ -1,0 +1,5 @@
+.DS_Store
+venv
+*.pyc
+db.sqlite3
+*.zip

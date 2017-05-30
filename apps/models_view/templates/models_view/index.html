@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Models View</title>
+  </head>
+  <body>
+    {% for model_name, model_objs in models.items %}
+      <table border="1">
+        <caption style="text-align: left;">{{ model_name }} ({{ model_objs|length }} item/s)</caption>
+        <thead>
+          {% autoescape off %}{{ model_objs.0.toHTMLTableTHeadRow }}{% endautoescape %}
+        </thead>
+        <tbody>
+          {% for obj in model_objs %}
+            {% autoescape off %}{{ obj.toHTMLTableTBodyRow }}{% endautoescape %}
+          {% endfor %}
+        </tbody>
+      </table>
+    {% endfor %}
+  </body>
+</html>

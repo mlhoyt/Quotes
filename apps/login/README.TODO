@@ -1,0 +1,4 @@
+[ ] pip install bcrypt
+[ ] IMPORT ReuseWare/Apps/models_view
+[ ] EDIT apps/login/views.py
+[ ] - Replace '{{OTHER_APP}}' accordingly

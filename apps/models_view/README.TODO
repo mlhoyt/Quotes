@@ -1,0 +1,4 @@
+[ ] EDIT apps/models_view/views.py
+[ ] - Replace '{{OTHER_APP}}' and '{{MODEL}}' accordingly
+[ ] EDIT apps/{{OTHER_APP}}/models.py
+[ ] - Add "ModelsViewMixin" to "models.Model" in inheritance lists
