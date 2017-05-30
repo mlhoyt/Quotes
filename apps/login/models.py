@@ -48,10 +48,11 @@ class UsersManager( models.Manager ):
         elif not dob_regex.match( postData['dob'] ):
             errors.append( "Incorrectly formatted date of birth: " + postData['dob'] )
         # validate dob (in past)
-        # else:
-        #     dob_dt = datetime.datetime.strptime( postData['dob'], "%y-%m-%d" )
-        #     if dob_dt >= datetime.datetime.now():
-        #         errors.append( "The date of birth field must be in the past" )
+        else:
+            dob_dt = datetime.datetime.strptime( postData['dob'], "%Y-%m-%d" )
+            # print "Debug: login.models: dob:{} now:{}".format( dob_dt, datetime.datetime.now() )
+            if dob_dt >= datetime.datetime.now():
+                errors.append( "The date of birth field must be in the past" )
 
         # validate pw_1 (raw content)
         if len( postData['pw_1'] ) < 1:
@@ -80,6 +81,7 @@ class UsersManager( models.Manager ):
                     email = postData['email'],
                     name = postData['name'],
                     alias = postData['alias'],
+                    dob = datetime.datetime.strptime( postData['dob'], "%Y-%m-%d" ),
                     password = get_pw_hash( postData['pw_1'].encode() ),
                 )
             }
@@ -124,7 +126,7 @@ class Users( models.Model, ModelsViewMixin ):
     alias = models.CharField( max_length = 255 )
     email = models.CharField( max_length = 255 )
     password = models.CharField( max_length = 40 )
-    dob = models.CharField( max_length = 10 )
+    dob = models.DateField()
     created_at = models.DateTimeField( auto_now_add = True )
     updated_at = models.DateTimeField( auto_now = True )
 
