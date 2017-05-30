@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Quotes</title>
+    {% include 'login/common/head_js.html' %}
+    {% include 'login/common/head_css.html' %}
+  </head>
+  <body>
+    <header>
+      <h2 id="header_icon"></h2>
+      <a href="{% url 'quotes:index' %}">Dashboard</a>
+      |
+      <a href="{% url 'login:logout' %}">Logout</a>
+    </header>
+    <main>
+      <p style="font-size: 125%;">Posts by: {{ user.alias }}</p>
+      <p style="font-size: 125%;">Count: {{ user.favorite_quotes.all|length }}</p>
+      {% for quote in user.favorite_quotes.all %}
+        <div>
+          <span style="color: red;">{{ quote.author }}</span>:
+          {{ quote.content }}
+        </div>
+      {% endfor %}
+    </main>
+  </body>
+</html>

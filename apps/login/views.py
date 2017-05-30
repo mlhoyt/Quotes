@@ -4,7 +4,7 @@ from .models import Users
 
 def index( request ):
     if 'login_id' in request.session:
-        return redirect( reverse( "{{OTHER_APP}}:index" ) )
+        return redirect( reverse( "quotes:index" ) )
     else:
         return render( request, "login/index.html" )
 
@@ -23,7 +23,7 @@ def register( request ):
             request.session['name'] = db_result['user'].name
             request.session['alias'] = db_result['user'].alias
             request.session['new_registration'] = 1
-            return redirect( reverse( "{{OTHER_APP}}:index" ) )
+            return redirect( reverse( "quotes:index" ) )
     else:
         return redirect( reverse( "login:index" ) )
 
@@ -41,7 +41,7 @@ def login( request ):
             request.session['email'] = db_result['user'].email
             request.session['name'] = db_result['user'].name
             request.session['alias'] = db_result['user'].alias
-            return redirect( reverse( "{{OTHER_APP}}:index" ) )
+            return redirect( reverse( "quotes:index" ) )
     else:
         return redirect( reverse( "login:index" ) )
 

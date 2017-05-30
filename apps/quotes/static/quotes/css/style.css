@@ -1,0 +1,89 @@
+/* -*- css -*- */
+
+/* minimal reset */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+body {
+  margin: 0 auto;
+}
+
+/* ------------------------- Header ------------------------- */
+
+header {
+  height: 30px;
+  padding: 0.5rem;
+  border-bottom: 2px solid black;
+}
+
+header h2 {
+  display: inline-block;
+  width: 400px;
+}
+
+header p {
+  display: inline-block;
+  float: right;
+  text-size: 12px;
+  margin-right: 1rem;
+  margin-top: 0.25rem;
+}
+
+/* ------------------------- Body :: Login/Registration ------------------------- */
+
+div#registration {
+  display: inline-block;
+  vertical-align: top;
+  width: 350px;
+  padding: 1rem;
+  border: 1px solid black;
+}
+
+div#registration label {
+  display: inline-block;
+  width: 140px;
+}
+
+div#login {
+  display: inline-block;
+  vertical-align: top;
+  width: 290px;
+  padding: 1rem;
+  border: 1px solid black;
+}
+
+div#login label {
+  display: inline-block;
+  width: 80px;
+}
+
+input.email {
+  display: inline-block;
+  width: 200px;
+}
+
+input.name {
+  display: inline-block;
+  width: 120px;
+}
+
+input.passwd {
+  display: inline-block;
+  width: 80px;
+}
+
+input.button {
+  background-color: rgb(160, 160, 160);
+  border-radius: 0.25rem;
+  padding: 0.25rem;
+}
+
+div#flash {
+  width: 650px;
+  border: 1px solid red;
+  color: red;
+  font-weight: bold;
+}
