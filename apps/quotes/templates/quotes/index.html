@@ -8,7 +8,7 @@
   </head>
   <body>
     <header>
-      <h2 id="header_icon">Welcome, {{ request.session.alias }}!</h2>
+      <h2 id="header_icon">Welcome, <a href="{% url 'quotes:view_user' id=request.session.login_id %}">{{ request.session.alias }}</a>!</h2>
       <a href="{% url 'login:logout' %}">Logout</a>
     </header>
     <main>
@@ -20,7 +20,9 @@
               <p>
                 {{ quote.author }}: {{ quote.content }}
               </p>
-              Posted by: <a href="{% url 'quotes:view_user' id=quote.posted_by.id %}">{{ quote.posted_by.alias }}</a>
+              <span style="font-size: 75%">
+                Posted by: <a href="{% url 'quotes:view_user' id=quote.posted_by.id %}">{{ quote.posted_by.alias }}</a>
+              </span>
               <a href="{% url 'quotes:add_favorite' u_id=request.session.login_id q_id=quote.id %}"><button type="button">Add to My List</button></a>
             </div>
           {% endfor %}
@@ -34,7 +36,9 @@
               <p>
                 {{ quote.author }}: {{ quote.content }}
               </p>
-              Posted by: <a href="{% url 'quotes:view_user' id=quote.posted_by.id %}">{{ quote.posted_by.alias }}</a>
+              <span style="font-size: 75%">
+                Posted by: <a href="{% url 'quotes:view_user' id=quote.posted_by.id %}">{{ quote.posted_by.alias }}</a>
+              </span>
               <a href="{% url 'quotes:remove_favorite' u_id=request.session.login_id q_id=quote.id %}"><button type="button">Remove from My List</button></a>
             </div>
           {% endfor %}
@@ -49,6 +53,13 @@
               <br />
               <input type="submit" value="Submit" />
             </form>
+            {% if messages %}
+              <div style="border: 1px solid red; color: red;">
+                {% for message in messages %}
+                  <p>{{ message }}</p>
+                {% endfor %}
+              </div>
+            {% endif %}
         </div>
       </div>
     </main>

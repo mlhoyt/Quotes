@@ -6,7 +6,7 @@ from ..login.models import Users
 def index( request ):
     if 'login_id' in request.session:
         context = {
-            'non_fav_quotes': Quote.objects.exclude( favored_by__id = request.session['login_id'] ),
+            'non_fav_quotes': Quote.objects.exclude( favored_by__id = request.session['login_id'] ).order_by ( '-created_at' ),
             'fav_quotes': Quote.objects.filter( favored_by__id = request.session['login_id'] ),
         }
         return render( request, "quotes/index.html", context )
@@ -40,7 +40,7 @@ def remove_favorite( request, u_id, q_id ):
 def view_user( request, id ):
     if 'login_id' in request.session:
         context = {
-            'user': Users.objects.get( id = int( request.session['login_id'] ) ),
+            'user': Users.objects.get( id = int( id ) ),
         }
         return render( request, "quotes/view_user.html", context )
 

@@ -17,7 +17,7 @@
       <p style="font-size: 125%;">Posts by: {{ user.alias }}</p>
       <p style="font-size: 125%;">Count: {{ user.favorite_quotes.all|length }}</p>
       {% for quote in user.favorite_quotes.all %}
-        <div>
+        <div style="width: 400px;">
           <span style="color: red;">{{ quote.author }}</span>:
           {{ quote.content }}
         </div>

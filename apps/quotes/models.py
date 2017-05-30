@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from django.db.models import Count
+# from django.db.models import Count
 from ..models_view.models import ModelsViewMixin
 from ..login.models import Users
 
@@ -10,12 +10,12 @@ class QuoteManager( models.Manager ):
         errors = []
 
         # validate quoted_by
-        if len( postData['quoted_by'] ) < 1:
-            errors.append( "The Quoted By field is empty.")
+        if len( postData['quoted_by'] ) < 3:
+            errors.append( "The Quoted By field is too short (at least 3 characters).")
 
         # validate content
-        if len( postData['content'] ) < 1:
-            errors.append( "The Message field is empty.")
+        if len( postData['content'] ) < 10:
+            errors.append( "The Message field is too short (at least 10 characters).")
 
         # return
         if len( errors ):
